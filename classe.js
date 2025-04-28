@@ -68,8 +68,8 @@ class Player extends obj {
         this.x += this.xdir
         if (this.x <= 2) {
             this.x = 2
-        } else if (this.x >= 1020) {
-            this.x = 1016
+        } else if (this.x >= 990) {
+            this.x = 990
         }
     }
     shoot(originX, originY, targetX, targetY) {
@@ -77,7 +77,7 @@ class Player extends obj {
         if (this.tempo == 0 && this.ammo != 0){
         this.angulo = Math.atan2(targetY - originY, targetX - originX);
             if(jogador == "arthur"){
-                const bullet = new Bullet(originX, originY, 12, 12, './img/bullet.png', this.angulo, 60);
+                const bullet = new Bullet(originX, originY, 12, 12, './img/bullet.png', this.angulo, 20);
                 this.bullets.push(bullet);
                 this.tempo = 24
                 this.ammo -= 1
@@ -96,7 +96,7 @@ class Player extends obj {
                 this.tempo = 48
                 
             } else if (jogador == 'manu'){
-                const bullet = new Bullet(originX, originY, 12, 12, './img/knife.png', this.angulo, 60);
+                const bullet = new Bullet(originX, originY, 12, 12, './img/knife.png', this.angulo, 100);
                 this.bullets.push(bullet);
                 this.tempo = 24
                 this.ammo -= 1
@@ -114,7 +114,6 @@ class Bullet extends obj {
     speed = 12
     active = true
     dintacia = 0
-    range = 0
     constructor(x, y, w, h, a,angle,range) {
         super(x, y, w, h, a)
         this.angle = angle
@@ -200,9 +199,7 @@ class enemyspawer{
     enemys = []
     atulizar_timer(){
         this.timer+= 1
-        console.log(this.timer)
         if(this.timer >= this.cap){
-            console.log("foi")
             this.timer = 0
             this.coinflip = Math.floor(Math.random() * ((2 - 1 + 1) + 1))
             if(this.coinflip == 2){

@@ -1,7 +1,6 @@
 @font-face { font-family: 'Daydream'; src: url('Daydream.ttf'); } 
 body{
     margin: 0;
-    background-color: rgb(128, 128, 128);
     font-family: 'Daydream';
 }
 canvas{
@@ -17,3 +16,21 @@ canvas{
 canvas:hover{
     cursor: none;
 }
+html {
+    min-height: 100%;
+    background-image: url("./deadzone-sprites/index-elements/deadzone-sky.png");
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: top;
+    animation: sky 13.0s infinite linear;
+ }
+
+ @keyframes sky{
+
+    0%{
+    }
+
+    100%{
+        background-position-x: -16000px;
+    }
+ }

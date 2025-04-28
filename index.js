@@ -2,6 +2,8 @@
 
 let des = document.getElementById('des').getContext('2d')
 const rect = des.canvas.getBoundingClientRect()
+
+
 let mouseX = 0;
 let mouseY = 0;
 moving = false
@@ -18,7 +20,8 @@ let pointstext = new Text()
 let leveltext = new Text()
 showlevel = false
 
-let health = new Health(0,0,120,120,`./img/${jogador}/${jogador}-a01.png`)
+let health = new Health(1064,20,120,120,`./img/${jogador}/${jogador}-a01.png`)
+let caixa = new Background(1024,0,200,768,`./img/caixa.png`)
 let road = new Background(0,0,1024,768,`./img/rua.png`)
 let gameover = new Background(0,0,1024,768,`./img/game-over.png`)
 let medkit = new Medkit(140,140,40,40,`./img/medkit.png`)
@@ -120,19 +123,24 @@ function desenha(){
         for(i = 0; i< enemyspawn.enemys.length; i++){
             enemyspawn.enemys[i].des_enemy_img()
         }
+        caixa.des_background_img()
         health.des_health_img()
         baseball.des_bat_img(player.x, player.y)
         if(player.ammo <= 0){
-            ammotext.des_text("Reloading...", 120, 40,"red","12px Daydream" )
+            ammotext.des_text("Reloading...", 1044, 180,"red","12px Daydream" )
         } else{
-            ammotext.des_text("Ammo: " + player.ammo, 120, 40,"red","12px Daydream" )
+            ammotext.des_text("Ammo: " + player.ammo, 1044, 180,"red","12px Daydream" )
         }
-        pointstext.des_text("points: " + player.pontos, 120, 80,"red","12px Daydream" )
+        pointstext.des_text("points: " + player.pontos, 1044, 200,"red","12px Daydream" )
         medkit.des_medkit_img()
         if (showlevel == true){
             leveltext.des_text("Level: " + level, 351, 384,'red','36px Daydream')
         }
     } else if (playing == 0){
+        caixa.des_background_img()
+        ammotext.des_text("Ammo: " + player.ammo, 1044, 180,"red","12px Daydream" )
+        pointstext.des_text("points: " + player.pontos, 1044, 200,"red","12px Daydream" )
+        health.des_health_img()
         gameover.des_background_img()
     }
     marker.des_marker_img()
@@ -169,7 +177,7 @@ function atualiza(){
     
 }
 function main(){
-    des.clearRect(0,0,1024,768)
+    des.clearRect(0,0,1224,768)
     desenha()
     atualiza()
     requestAnimationFrame(main)

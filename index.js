@@ -27,7 +27,7 @@ let c1 = new obj(689, 868, 100, 45, './assets/carro2.png')
 let c2 = new obj(528, 691, 100, 45, './assets/carro1.png')
 
 
-let musica = new Audio('./img/konton.mp3')
+let musica = new Audio('./img/main.mp3')
 
 playing = 1
 level = 1
